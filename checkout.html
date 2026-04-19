@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thanh toán</title>
+<style>
+body{text-align:center;font-family:Arial;background:#111;color:white}
+.box{margin-top:50px}
+.qr{background:white;color:black;padding:20px;display:inline-block;border-radius:10px}
+</style>
+</head>
+<body>
+
+<h2>Thanh toán MB Bank</h2>
+
+<div class="box">
+<div id="info"></div>
+
+<div class="qr" id="qr"></div>
+
+<br><br>
+<button onclick="pay()">Tôi đã chuyển tiền</button>
+</div>
+
+<script>
+let order=JSON.parse(localStorage.getItem("order"));
+
+let total=order.price*order.qty;
+
+document.getElementById("info").innerHTML=`
+<p>STK: 0941639570</p>
+<p>Số tiền: ${total.toLocaleString()}đ</p>
+<p>Nội dung: ORDER123</p>
+`;
+
+document.getElementById("qr").innerText=
+`QR MB BANK\n${total}đ\n0941639570`;
+
+function pay(){
+alert("Thanh toán thành công!");
+window.location="cards.html";
+}
+</script>
+
+</body>
+</html>
