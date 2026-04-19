@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ví</title>
+</head>
+<body>
+
+<h2>Ví của bạn</h2>
+<p>Số dư: <span id="bal">0</span>đ</p>
+
+<input id="money" placeholder="Nạp tiền">
+<button onclick="nap()">Nạp</button>
+
+<script>
+let bal=localStorage.getItem("bal")||0;
+
+function update(){
+document.getElementById("bal").innerText=bal;
+}
+
+function nap(){
+bal+=+document.getElementById("money").value;
+localStorage.setItem("bal",bal);
+update();
+}
+
+update();
+</script>
+
+</body>
+</html>
